@@ -1,4 +1,4 @@
-# AIPowerPlus
+# AI Power Plus
 
 AI Power Plus does not contain any API key, but it makes you easily utilize the API of OpenAI, Claude AI or Google Gemini.
 
@@ -11,6 +11,7 @@ When you run the source code through Python, you just need to install PySide6.
 ## How to compile .exe binary program through Nuitka
 
 When you use Nuitka to compile the source code, here is a sample for how to run Nuitka.
+
 python -m nuitka --standalone --windows-console-mode=disable --enable-plugin=pyside6 --windows-icon-from-ico=logo.ico --windows-product-name="AI Power Plus" --windows-file-description="AI Power Plus" --windows-file-version=1.0.0.0 --windows-product-version=1.0.0.0 --windows-company-name="Yike Jiang" AIPowerPlus.py
 
 ## License of AI Power Plus
