@@ -137,11 +137,12 @@ class LELang:
                                             'modified text',
                                             'written text',
                                             'Please watch the blackboard',
-                                            'The copyright of AI Power Plus is owned by Yike Jiang.\n\n'
-                                            'AI Power Plus uses Qt libraries dynamically '
-                                            'under the license of LGPL version 3. \n\n'
+                                            'AI Power Plus is released as free software\n\n'
+                                            'under GNU General Public License version 3.\n\n'
+                                            'AI Power Plus uses Qt libraries dynamically \n\n'
+                                            'under GNU Lesser General Public License version 3. \n\n'
                                             'There is no modification in Qt source code.\n\n'
-                                            'For more information, please visit ']
+                                            'For more information, please visit:']
 
         self.entry_translations_list_pl = ['AI Power Plus',
                                            'Tryb eksperta',
@@ -200,11 +201,12 @@ class LELang:
                                            'zmodyfikowany tekst',
                                            'napisany tekst',
                                            'Proszę patrzeć na tablicę',
-                                           'Prawa autorskie do AI Power Plus należą do Yike Jiang.\n\n'
-                                           'AI Power Plus korzysta dynamicznie z bibliotek Qt '
-                                           'na licencji LGPL wersja 3. \n\n'
+                                           'AI Power Plus jest wydany jako wolne oprogramowanie\n\n'
+                                           'na podstawie Powszechnej Licencji Publicznej GNU w wersji 3.\n\n'
+                                           'AI Power Plus korzysta dynamicznie z bibliotek Qt\n\n'
+                                           'na podstawie Mniejszej Powszechnej Licencji Publicznej GNU w wersji 3.\n\n'
                                            'Kod źródłowy Qt nie został w żaden sposób zmodyfikowany.\n\n'
-                                           'Aby uzyskać więcej informacji, odwiedź stronę ']
+                                           'Aby uzyskać więcej informacji, odwiedź stronę:']
 
         self.entry_translations_list_zh = ['AI Power Plus',
                                            '专家模式',
@@ -263,10 +265,10 @@ class LELang:
                                            '修改好的文本',
                                            '写好的文本',
                                            '请看黑板',
-                                           'AI Power Plus的版权属于Yike Jiang。\n\n'
-                                           'AI Power Plus根据第3版LGPL协议动态使用Qt库。\n\n'
+                                           'AI Power Plus基于GNU通用公共许可证第3版作为自由软件发布。\n\n'
+                                           'AI Power Plus根据GNU宽通用公共许可证第3版动态使用Qt库。\n\n'
                                            '没有对Qt源代码作任何修改。\n\n'
-                                           '欲了解更多信息，请访问']
+                                           '欲了解更多信息，请访问：']
 
     def get_lang(self, interface_language_index, entry):
         entry_index = self.entry_list.index(entry)
