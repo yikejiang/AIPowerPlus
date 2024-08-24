@@ -6,9 +6,11 @@ AI Power Plus does not contain any API key, but it makes you easily utilize the 
 
 When I tried the voice interactive mode of the mobile app from OpenAI, I strongly felt that the development of AI could not be ignored now. Last year GPT 3.5 didn't give me a good impression, but this year I was greatly impressed by GPT-4o. And later I was interested in more AI models, including Claude AI 3.5 Sonnet and Google Gemini 1.5 Pro. How to utilize the APIs of the great AI models? I then decided to write this app.
 
-At the beginning I used the modules from the AI companies, which also require a lot of dependency modules. Later, I realized the functions through REST APIs according to technical documentation from the AI companies.
+Originally I wrote the app based on Python. At the beginning I used the modules from the AI companies, which also require a lot of dependency modules. Later, I realized the functions through REST APIs according to technical documentation from the AI companies.
 
-Originally I used Python to write the app. It was good for me to locally run the app on my computer, but when the executable file complied through Nuitka was distributed through Internet, it was always mistakenly automatically deleted by Microsoft Defender on Windows 11. So I then distributed the executable file packaged through PyInstaller. The package made through PyInstaller was much bigger than through Nuitka, and I then became aware that the best way should be to reconstruct the app using C++.
+In the past I liked to compile Python source code to an executable program through Nuitka. It was good for me to locally run the app on my computer, but when the executable file complied through Nuitka was distributed through Internet, it was always mistakenly automatically deleted by Microsoft Defender on Windows 11. I then distributed the executable file packaged through PyInstaller. However, the package made through PyInstaller was much bigger than through Nuitka. Therefore, I became aware that the best way should be to reconstruct the app using C++.
+
+The Python source code has been migrated to the repository of AI Power Plus for Python. The future plan about Python source code is mainly to fix bugs. New features will only be added to the C++ version.
 
 I will release the C++ source code next week.
 
