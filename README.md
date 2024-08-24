@@ -20,7 +20,7 @@ If you want to compile the source code thourgh MSVC 2022, it is better to change
 
 If you want to run or modify the source code using Qt Creator on Windows or Linux, you just need to create a project with the same name "AIPowerPlus" and then remove all files in the poject's folder but leave CMakeLists.txt.user, and put the app's source code to there. Then Qt Creator can recognize the project of the app.
 
-When you want to run or modify the source code using Clion on Windows, if you install the MinGW-w64 compiled version of Qt 6.8.0 libraries, you need to add "-DCMAKE_PREFIX_PATH=C:\Qt\6.8.0\mingw_64" to "CMake options", and set "Working directory" to "C:\Qt\6.8.0\mingw_64\bin".
+When you want to run or modify the source code using Clion on Windows, if you have installed the MinGW-w64 compiled version of Qt 6.8.0 libraries, you need to add "-DCMAKE_PREFIX_PATH=C:\Qt\6.8.0\mingw_64" to "CMake options", and set "Working directory" to "C:\Qt\6.8.0\mingw_64\bin". When using Clion on Linux (Fedora 40), if you have installed the Desktop version of Qt 6.8.0 libraries through qt-online-installer-linux-x64-4.8.0.run (the version of the installer may be different), you need to add "-DCMAKE_PREFIX_PATH=/opt/Qt/6.8.0/gcc_64" to "CMake options", and set "Working directory" to "/opt/Qt/6.8.0/gcc_64/bin".
 
 ## License of AI Power Plus
 
