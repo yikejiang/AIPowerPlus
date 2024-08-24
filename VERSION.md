@@ -1,1 +1,1 @@
-This is source code submitted on August 9, 2024.
+The Python source code of AI Power Plus has been migrated to the repository of AI Power Plus for Python.
