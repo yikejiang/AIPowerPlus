@@ -12,8 +12,6 @@ In the past I liked to compile Python source code to an executable program throu
 
 The Python source code has been migrated to the repository of AI Power Plus for Python. The future plan about Python source code is mainly to fix bugs. New features will only be added to the C++ version.
 
-I will release the C++ source code next week.
-
 ## How to run the source code
 
 C++ and Qt are a great combination for software development. I reconstruct the app mainly based on Qt 6.8.0 beta3. Both of the C++ compilers MinGW-w64 13.1.0 (included by Qt) and MinGW-w64 14.2.0 (from MSYS2) works well. I also sucessfully compiled the app using Qt Creator and Clion on Fedora 40. If you use Qt 6.7.2, it should be also fine.
