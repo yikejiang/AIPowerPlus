@@ -218,9 +218,6 @@ private:
 
     // app's description
     QTextEdit *texteditAppDescription = new QTextEdit;
-    QLabel *labelAppVersion = new QLabel;
-    QLabel *labelAppNote = new QLabel;
-    QLabel *labelAppWebsite = new QLabel;
 };
 
 #endif // APPSETTINGS_H
