@@ -217,6 +217,7 @@ private:
     QLabel *labelAPIKeyStatus = new QLabel;
 
     // app's description
+    QTextEdit *texteditAppDescription = new QTextEdit;
     QLabel *labelAppVersion = new QLabel;
     QLabel *labelAppNote = new QLabel;
     QLabel *labelAppWebsite = new QLabel;

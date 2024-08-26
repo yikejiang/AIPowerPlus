@@ -1,10 +1,11 @@
 #include "applang.h"
 
 AppLang::AppLang() {
+    appVersion = "1.11";
+
     listInterfaceLanguage = {"English", "polski", "汉语"};
 
     listTranslationLanguage = {"English", "polski", "汉语"};
-
 
     listAIRole = {"translator", "writing_helper", "writer", "teacher", "programmer", "custom_role", "speaker"};
 
@@ -116,22 +117,22 @@ AppLang::AppLang() {
         {"watch_blackboard", QVariantMap{{"en", "Please watch the blackboard"}, {"pl", "Proszę patrzeć na tablicę"}, {"zh", "请看黑板"}}},
         {"here_is_my_explanation", QVariantMap{{"en", "Here is my explanation"}, {"pl", "To jest moje wyjaśnienie"}, {"zh", "这是我的解释"}}},
         {"software_note",
-         QVariantMap{{"en", "AI Translator Plus is released as free software\n\n"
+         QVariantMap{{"en", "AI Translator Plus is released as free software "
                             "under GNU General Public License version 3.\n\n"
-                            "AI Translator Plus uses Qt libraries dynamically \n\n"
+                            "AI Translator Plus uses Qt libraries dynamically "
                             "under GNU Lesser General Public License version 3. \n\n"
                             "There is no modification in Qt source code.\n\n"
-                            "For more information, please visit:"},
-                     {"pl", "AI Translator Plus jest wydany jako wolne oprogramowanie\n\n"
+                            "For more information, please visit https://www.aipowerplus.com ."},
+                     {"pl", "AI Translator Plus jest wydany jako wolne oprogramowanie "
                             "na podstawie Powszechnej Licencji Publicznej GNU w wersji 3.\n\n"
-                            "AI Translator Plus korzysta dynamicznie z bibliotek Qt\n\n"
+                            "AI Translator Plus korzysta dynamicznie z bibliotek Qt "
                             "na podstawie Mniejszej Powszechnej Licencji Publicznej GNU w wersji 3.\n\n"
                             "Kod źródłowy Qt nie został w żaden sposób zmodyfikowany.\n\n"
-                            "Aby uzyskać więcej informacji, odwiedź stronę:"},
+                            "Aby uzyskać więcej informacji, odwiedź stronę https://www.aipowerplus.com ."},
                      {"zh", "AI Translator Plus 基于 GNU 通用公共许可证第3版作为自由软件发布。\n\n"
                             "AI Translator Plus 根据 GNU 宽通用公共许可证第3版动态使用Qt库。\n\n"
                             "没有对 Qt 源代码作任何修改。\n\n"
-                            "欲了解更多信息，请访问："}}}
+                            "欲了解更多信息，请访问 https://www.aipowerplus.com 。"}}}
     };
 }
 

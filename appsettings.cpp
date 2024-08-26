@@ -10,6 +10,7 @@
 #include <QStandardPaths>
 #include <QFileDialog>
 #include <QFileInfo>
+#include <QPalette>
 
 AppSettings::AppSettings() : QDialog() {
     this -> setGeometry(0, 0, 900, 600);
@@ -158,13 +159,14 @@ AppSettings::AppSettings() : QDialog() {
 
     layoutRightCenter -> addWidget(labelAPIKeyStatus);
 
-    layoutRightLower -> addWidget(labelAppVersion);
+    layoutRightLower -> addWidget(texteditAppDescription);
+    texteditAppDescription -> setReadOnly(true);
+    texteditAppDescription -> setStyleSheet("QTextEdit {border: none;}");
 
-    layoutRightLower -> addWidget(labelAppNote);
-
-    labelAppWebsite -> setText("<a href=\"https://www.aipowerplus.com\">https://www.aipowerplus.com</a>");
-    labelAppWebsite -> setOpenExternalLinks(true);
-    layoutRightLower -> addWidget(labelAppWebsite);
+    QPalette paletteMain = this -> palette();
+    QPalette paletteTexteditAppDescription = texteditAppDescription -> palette();
+    paletteTexteditAppDescription.setColor(QPalette::Base, paletteMain.color(QPalette::Window));
+    texteditAppDescription -> setPalette(paletteTexteditAppDescription);
 
     // Signals and slots
     connect(comboboxAIRole, &QComboBox::currentIndexChanged, this, &AppSettings::whenAIRoleIsChanged);
@@ -537,8 +539,10 @@ void AppSettings::setLang() {
     buttonSaveAPIKey -> setText(appLang.readLangEntry(indexInterfaceLanguage, "save"));
     buttonModifyAPIKey -> setText(appLang.readLangEntry(indexInterfaceLanguage, "modify"));
 
-    labelAppVersion -> setText("AI Power Plus 1.1\n");
-    labelAppNote -> setText(appLang.readLangEntry(indexInterfaceLanguage, "software_note"));
+    texteditAppDescription -> clear();
+    texteditAppDescription -> append(QString("AI Power Plus %1").arg(appLang.appVersion));
+    texteditAppDescription -> append("\n");
+    texteditAppDescription -> append(appLang.readLangEntry(indexInterfaceLanguage, "software_note"));
 
     setLangAPIKeys();
 }

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.29)
 
-project(AIPowerPlus VERSION 1.1 LANGUAGES CXX)
+project(AIPowerPlus VERSION 1.11 LANGUAGES CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)

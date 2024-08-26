@@ -20,6 +20,8 @@ public:
     QList<QString> readComboboxItemsAPIKeyName(const int &indexInterfaceLanguage);
     QString readAPIKeyName(const int &indexAPIKeyName);
 
+    QString appVersion;
+
     QList<QString> listInterfaceLanguage;
     QList<QString> listTranslationLanguage;
     QList<QString> listAIRole;
