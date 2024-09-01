@@ -129,6 +129,7 @@ MainWindow::MainWindow() : QMainWindow() {
     layoutMainLeftUpper -> addWidget(texteditUserText);
 
     texteditBlackboard -> setAcceptRichText(false);
+    texteditBlackboard -> setReadOnly(true);
     texteditBlackboard -> setFont(font);
     layoutMainLeftUpper -> addWidget(texteditBlackboard);
 
@@ -143,6 +144,7 @@ MainWindow::MainWindow() : QMainWindow() {
     layoutMainLeftLower -> addWidget(texteditAIText);
 
     texteditTeacherExplanation -> setAcceptRichText(false);
+    texteditTeacherExplanation -> setReadOnly(true);
     texteditTeacherExplanation -> setFont(font);
     layoutMainLeftLower -> addWidget(texteditTeacherExplanation);
 
@@ -559,40 +561,64 @@ void MainWindow::receiveCommunicationResult(const QString &aiRoleResult, const Q
         }
 
         if (aiRoleResult == "translator" || aiRoleResult == "writing_helper" || aiRoleResult == "writer") {
-            texteditAIText -> setText(aiOutput);
-            texteditAIExplanation -> setText(aiExplanation);
-            texteditChatHistory -> append(
-                QString("AI (%1):\n\n"
-                        "%2%3:\n\n"
-                        "%4\n\n"
-                        "%5:\n\n"
-                        "%6").arg(
-                        currentTime,
-                        appLang.readLangEntry(indexInterfaceLanguage, "here_is_my"),
-                        appLang.readLangEntry(indexInterfaceLanguage, appConfiguration.readAITextType(aiRoleResult)),
-                        aiOutput,
-                        appLang.readLangEntry(indexInterfaceLanguage, "here_is_my_explanation"),
-                        aiExplanation
-                        )
-                );
+            if (aiExplanation == "error") {
+                texteditAIText -> setText("");
+                texteditAIExplanation -> setText(aiOutput);
+                texteditChatHistory -> append(
+                    QString("AI (%1):\n\n"
+                            "%2").arg(
+                            currentTime,
+                            aiOutput
+                            )
+                    );
+            } else {
+                texteditAIText -> setText(aiOutput);
+                texteditAIExplanation -> setText(aiExplanation);
+                texteditChatHistory -> append(
+                    QString("AI (%1):\n\n"
+                            "%2%3:\n\n"
+                            "%4\n\n"
+                            "%5:\n\n"
+                            "%6").arg(
+                            currentTime,
+                            appLang.readLangEntry(indexInterfaceLanguage, "here_is_my"),
+                            appLang.readLangEntry(indexInterfaceLanguage, appConfiguration.readAITextType(aiRoleResult)),
+                            aiOutput,
+                            appLang.readLangEntry(indexInterfaceLanguage, "here_is_my_explanation"),
+                            aiExplanation
+                            )
+                    );
+            }
         }
 
         if (aiRoleResult == "teacher") {
-            texteditBlackboard -> setText(aiOutput);
-            texteditTeacherExplanation -> setText(aiExplanation);
-            texteditChatHistory -> append(
-                QString("AI (%1):\n\n"
-                        "%2:\n\n"
-                        "%3\n\n"
-                        "%4:\n\n"
-                        "%5").arg(
-                        currentTime,
-                        appLang.readLangEntry(indexInterfaceLanguage, "watch_blackboard"),
-                        aiOutput,
-                        appLang.readLangEntry(indexInterfaceLanguage, "here_is_my_explanation"),
-                        aiExplanation
-                        )
-                );
+            if (aiExplanation == "error") {
+                texteditBlackboard -> setText("");
+                texteditTeacherExplanation -> setText("");
+                texteditChatHistory -> append(
+                    QString("AI (%1):\n\n"
+                            "%2").arg(
+                            currentTime,
+                            aiOutput
+                            )
+                    );
+            } else {
+                texteditBlackboard -> setText(aiOutput);
+                texteditTeacherExplanation -> setText(aiExplanation);
+                texteditChatHistory -> append(
+                    QString("AI (%1):\n\n"
+                            "%2:\n\n"
+                            "%3\n\n"
+                            "%4:\n\n"
+                            "%5").arg(
+                            currentTime,
+                            appLang.readLangEntry(indexInterfaceLanguage, "watch_blackboard"),
+                            aiOutput,
+                            appLang.readLangEntry(indexInterfaceLanguage, "here_is_my_explanation"),
+                            aiExplanation
+                            )
+                    );
+            }
         }
 
         if (aiRoleResult == "programmer" || aiRoleResult == "custom_role") {

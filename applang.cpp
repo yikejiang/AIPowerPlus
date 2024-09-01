@@ -1,7 +1,7 @@
 #include "applang.h"
 
 AppLang::AppLang() {
-    appVersion = "1.11";
+    appVersion = "1.12";
 
     listInterfaceLanguage = {"English", "polski", "汉语"};
 

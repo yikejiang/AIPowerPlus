@@ -285,45 +285,50 @@ void AppCommunication::run() {
     connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
     loop.exec();
 
-    QByteArray replyData = reply -> readAll();
-
     QString aiOutput;
     QString aiExplanation;
 
-    if (replyType == "audio") {
-        QFile fileTTSAudio(pathTTSAudioFile);
-
-        fileTTSAudio.open(QIODevice::WriteOnly);
-        fileTTSAudio.write(replyData);
-        fileTTSAudio.close();
+    if (reply -> error() != QNetworkReply::NoError) {
+        aiOutput = reply -> errorString();
+        aiExplanation = "error";
     } else {
-        QJsonDocument replyJson = QJsonDocument::fromJson(replyData);
+        QByteArray replyData = reply -> readAll();
 
-        QString replyString;
+        if (replyType == "audio") {
+            QFile fileTTSAudio(pathTTSAudioFile);
 
-        if (aiModel.contains("gpt")) {
-            replyString = replyJson["choices"][0]["message"]["content"].toString();
-        }
+            fileTTSAudio.open(QIODevice::WriteOnly);
+            fileTTSAudio.write(replyData);
+            fileTTSAudio.close();
+        } else {
+            QJsonDocument replyJson = QJsonDocument::fromJson(replyData);
 
-        if (aiModel.contains("claude")) {
-            replyString = replyJson["content"][0]["text"].toString();
-        }
+            QString replyString;
 
-        if (aiModel.contains("gemini")) {
-            replyString = replyJson["candidates"][0]["content"]["parts"][0]["text"].toString();
-        }
+            if (aiModel.contains("gpt")) {
+                replyString = replyJson["choices"][0]["message"]["content"].toString();
+            }
+
+            if (aiModel.contains("claude")) {
+                replyString = replyJson["content"][0]["text"].toString();
+            }
+
+            if (aiModel.contains("gemini")) {
+                replyString = replyJson["candidates"][0]["content"]["parts"][0]["text"].toString();
+            }
 
 
-        if (replyString.contains(QString("<output_%1>").arg(randomID)) && replyString.contains(QString("</output_%1>").arg(randomID))) {
-            QStringList outputProcessFirst = replyString.split(QString("<output_%1>").arg(randomID));
-            QStringList outputProcessSecond = outputProcessFirst[1].split(QString("</output_%1>").arg(randomID));
-            aiOutput = outputProcessSecond[0].trimmed();
-        }
+            if (replyString.contains(QString("<output_%1>").arg(randomID)) && replyString.contains(QString("</output_%1>").arg(randomID))) {
+                QStringList outputProcessFirst = replyString.split(QString("<output_%1>").arg(randomID));
+                QStringList outputProcessSecond = outputProcessFirst[1].split(QString("</output_%1>").arg(randomID));
+                aiOutput = outputProcessSecond[0].trimmed();
+            }
 
-        if (replyString.contains(QString("<addition_%1>").arg(randomID)) && replyString.contains(QString("</addition_%1>").arg(randomID))) {
-            QStringList additionProcessFirst = replyString.split(QString("<addition_%1>").arg(randomID));
-            QStringList additionProcessSecond = additionProcessFirst[1].split(QString("</addition_%1>").arg(randomID));
-            aiExplanation = additionProcessSecond[0].trimmed();
+            if (replyString.contains(QString("<addition_%1>").arg(randomID)) && replyString.contains(QString("</addition_%1>").arg(randomID))) {
+                QStringList additionProcessFirst = replyString.split(QString("<addition_%1>").arg(randomID));
+                QStringList additionProcessSecond = additionProcessFirst[1].split(QString("</addition_%1>").arg(randomID));
+                aiExplanation = additionProcessSecond[0].trimmed();
+            }
         }
     }
 
